@@ -116,13 +116,13 @@ fn test_libs(){
                 nat_elapsed.subsec_nanos(),
                 iters);
 //  UNCOMMENTING THIS BLOCK WILL CAUSE THE function to fail
-//    println!("Testing equality");
-//    for idx in 1..6 {
-//        let jpeg_dec = jpeg_decoder(&jpegs[5 + idx]);
-//        let nat_dec = nat_decoder(&jpegs[5 + idx]);
-//        println!("{} are equal - {}", idx,  are_same(&jpeg_dec, &nat_dec));
-//    }
-//
+    println!("Testing equality");
+    for idx in 1..6 {
+        let jpeg_dec = jpeg_decoder(&jpegs[5 + idx]);
+        let nat_dec = nat_decoder(&jpegs[5 + idx]);
+        println!("{} are equal - {}", idx,  are_same(&jpeg_dec, &nat_dec));
+    }
+
 
 }
 
