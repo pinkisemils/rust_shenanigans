@@ -74,7 +74,7 @@ fn test_lib(jpegs: &Vec<Frame>, work: &Fn(&Frame)) -> time::Duration
 fn test_libs(){
     unsafe{ test(); }
     let jpeg_t_w = |input: &Frame| {
-        let mut buffer = [0u8; 1920 * 1080 * 3];
+        let mut buffer = vec![0u8; 1920 * 1080 * 3];
         let mut retval = 0;
         unsafe {
             retval = decode_jpeg(input[..].as_ptr(), input.len(), buffer[..].as_ptr());
@@ -91,7 +91,7 @@ fn test_libs(){
     };
 
     let jpeg_decoder = |input: &Frame| {
-        let mut buffer = [0u8; 1920 * 1080 * 3];
+        let mut buffer = vec![0u8; 1920 * 1080 * 3];
         let mut retval = 0;
         unsafe {
             retval = decode_jpeg(input[..].as_ptr(), input.len(), buffer[..].as_ptr());
@@ -115,7 +115,6 @@ fn test_libs(){
                 nat_elapsed.as_secs(),
                 nat_elapsed.subsec_nanos(),
                 iters);
-//  UNCOMMENTING THIS BLOCK WILL CAUSE THE function to fail
     println!("Testing equality");
     for idx in 1..6 {
         let jpeg_dec = jpeg_decoder(&jpegs[5 + idx]);
