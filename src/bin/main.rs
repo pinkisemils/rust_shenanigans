@@ -126,12 +126,6 @@ fn test_libs(){
 
 }
 
-//fn test_jpeg_turbo(){
-//    let work_f = ;
-//}
-
-//fn write_to_file()
-
 fn main_old() {
 
     let mut count = 0;
