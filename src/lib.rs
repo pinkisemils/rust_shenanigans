@@ -42,7 +42,6 @@ pub fn read_and_send(inf: File, tx: mpsc::SyncSender<Frame>) {
 }
 
 static JPEG_START: [u8; 2] = [0xff, 0xd8];
-static JPEG_END: [u8; 2] = [0xff, 0xd9];
 static BOUND: &'static [u8; 13] = b"--myboundary\n";
 
 fn matches_bound(buff: &[u8]) -> bool {
@@ -58,7 +57,6 @@ fn trim(mut buff: Vec<u8>) -> Vec<u8> {
     }
     let mut out = Vec::with_capacity(buff.len());
     let mut start = false;
-    let mut end = false;
     for bytep in buff.chunks(2) {
         if bytep == JPEG_START {
             start = true;
